@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.quizapp2.R;
+import com.example.quizapp2.settings.SettingsFragment;
 import com.example.quizapp2.settings.SettingsViewModel;
 import com.example.quizapp2.ui.history.HistoryFragment;
 import com.example.quizapp2.ui.history.HistoryViewModel;
@@ -28,9 +29,8 @@ public class MainActivity extends AppCompatActivity {
     private SettingsViewModel settingsViewModel;
 
     private ViewPager mViewPager;
-    private MainPagerAdapter mainPagerAdapter;
     private BottomNavigationView mNavigation;
-
+    private ViewPagerAdapter viewPagerAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,8 @@ public class MainActivity extends AppCompatActivity {
         mViewPager = findViewById(R.id.main_view_pager);
         mNavigation = findViewById(R.id.bottom_navigation);
 
-        mViewPager.setAdapter(mainPagerAdapter);
+        viewPagerAdapter = new ViewPagerAdapter(getSupportFragmentManager());
+        mViewPager.setAdapter(viewPagerAdapter);
 
 
 
@@ -64,29 +65,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-private class MainPagerAdapter extends FragmentPagerAdapter{
 
-    public MainPagerAdapter(@NonNull FragmentManager fm, int behavior) {
-        super(fm, behavior);
-    }
-
-    @NonNull
-    @Override
-    public Fragment getItem(int position) {
-        Fragment fragment;
-        switch (position){
-            case 0:
-                fragment = MainFragment.newInstance();
-                break;
-                default: fragment = HistoryFragment.newInstance();
-        }
-        return fragment;
-    }
-
-    @Override
-    public int getCount() {
-        return 3;
-    }
-}
 
 }
