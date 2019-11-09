@@ -3,9 +3,35 @@
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorPrimary">@color/purple</item>
+        <item name="colorPrimaryDark">@color/dark_purple</item>
+        <item name="colorAccent">@color/purple</item>
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowBackground">@color/white</item>
+    </style>
+
+
+    <style name="TitleText" parent="AppTheme.Boldtext">
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/dark_purple</item>
+        <item name="android:padding">24dp</item>
+    </style>
+
+    <style name="AppTheme.LaunchScreen">
+    </style>
+
+    <style name="AppTheme.Boldtext">
+        <item name="android:fontFamily">sans-serif-black</item>
+    </style>
+    <style name="AppTheme.RegularText">
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    <style name="AppTheme.Semibol">
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    <style name="AppTheme.LightText">
+        <item name="android:fontFamily">sans-serif-light</item>
     </style>
 
 </resources>
