@@ -6,27 +6,31 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.quizapp2.R;
+import com.example.quizapp2.settings.SettingsViewModel;
 import com.example.quizapp2.ui.history.HistoryFragment;
+import com.example.quizapp2.ui.history.HistoryViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
-
     private MainViewModel mainViewModel;
+    private HistoryViewModel historyViewModel;
+    private SettingsViewModel settingsViewModel;
+
     private ViewPager mViewPager;
     private MainPagerAdapter mainPagerAdapter;
     private BottomNavigationView mNavigation;
 
-
-    TextView main_text;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,29 +43,28 @@ public class MainActivity extends AppCompatActivity {
         mViewPager.setAdapter(mainPagerAdapter);
 
 
-        mainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
-        mainViewModel.init();
 
-
-
-
-        mainViewModel.title.observe(this, new Observer<String>() {
+        mViewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
-            public void onChanged(String s) {
-//                main_text.setText(s);
+            public void onPageSelected(int position) {
+                int selectedItem = R.id.nav_main;
+
+                switch (position) {
+                    case 1:
+                        selectedItem = R.id.nav_history;
+                        break;
+                    case 2:
+                        selectedItem = R.id.nav_settings;
+                        break;
+                }
+
+                mNavigation.setSelectedItemId(selectedItem);
             }
         });
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                mainViewModel.changeTitle();
-            }
-        },2000);
-//        Log.d("ololo", "Textview context is: " + main_text.getContext().toString());
     }
 
-public class MainPagerAdapter extends FragmentPagerAdapter{
+
+private class MainPagerAdapter extends FragmentPagerAdapter{
 
     public MainPagerAdapter(@NonNull FragmentManager fm, int behavior) {
         super(fm, behavior);

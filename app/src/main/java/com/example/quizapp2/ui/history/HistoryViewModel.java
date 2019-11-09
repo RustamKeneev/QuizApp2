@@ -1,7 +1,18 @@
 package com.example.quizapp2.ui.history;
 
+import android.util.Log;
+
+import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 public class HistoryViewModel extends ViewModel {
-    // TODO: Implement the ViewModel
+    MutableLiveData<String> title = new MutableLiveData<>();
+
+    public HistoryViewModel(){
+        title.setValue("Asdasdasd");
+        Log.d("ololo", "History viewmodel created");
+    }
+    public void onClearClick() {
+        title.setValue("History cleared");
+    }
 }
