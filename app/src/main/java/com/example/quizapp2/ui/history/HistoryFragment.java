@@ -11,12 +11,15 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.quizapp2.R;
 
 public class HistoryFragment extends Fragment {
 
     private HistoryViewModel mViewModel;
+
+
 
     public static HistoryFragment newInstance() {
         return new HistoryFragment();

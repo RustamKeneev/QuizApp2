@@ -1,4 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="page_big_margin">64dp</dimen>
+    <dimen name="page_history_margin">18dp</dimen>
+    <dimen name="margin_left_history">16dp</dimen>
+    <dimen name="margin_top_history">8dp</dimen>
+    <dimen name="margin_top_history_correct_answers">14dp</dimen>
+    <dimen name="margin_bottom_history">14dp</dimen>
+
+    <dimen name="history_text_size">12sp</dimen>
+
 </resources>
