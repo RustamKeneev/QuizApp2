@@ -1,5 +1,6 @@
-package com.example.quizapp2.settings;
+package com.example.quizapp2.ui.settings;
 
+import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
 import android.os.Bundle;
@@ -8,11 +9,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.quizapp2.R;
+import com.example.quizapp2.main.SettingsViewModel;
 
 public class SettingsFragment extends Fragment {
 
@@ -33,7 +36,12 @@ public class SettingsFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
         getActivity();
         mViewModel = ViewModelProviders.of(this).get(SettingsViewModel.class);
-        // TODO: Use the ViewModel
+        mViewModel.title.observe(this, new Observer<String>() {
+            @Override
+            public void onChanged(String s) {
+                Log.d("ololo", "Settings fragment " + s);
+            }
+        });
     }
 
 }

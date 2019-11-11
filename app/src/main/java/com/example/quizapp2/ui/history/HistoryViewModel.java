@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 public class HistoryViewModel extends ViewModel {
-    MutableLiveData<String> title = new MutableLiveData<>();
+   public MutableLiveData<String> title = new MutableLiveData<>();
 
     public HistoryViewModel(){
         title.setValue("Asdasdasd");

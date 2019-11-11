@@ -1,4 +1,4 @@
-package com.example.quizapp2.recycler;
+package com.example.quizapp2.ui.history.recycler;
 
 import android.view.View;
 import android.widget.ImageView;
@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quizapp2.R;
 
-public class QuizViewModel extends RecyclerView.ViewHolder {
+public class QuizHistoryViewModel extends RecyclerView.ViewHolder {
     TextView category_text;
     ImageView ic_more_horizontal;
     TextView correct_answers_text;
@@ -20,7 +20,7 @@ public class QuizViewModel extends RecyclerView.ViewHolder {
 
 
 
-    public QuizViewModel(@NonNull View itemView) {
+    public QuizHistoryViewModel(@NonNull View itemView) {
         super(itemView);
 
         category_text = itemView.findViewById(R.id.category_text);

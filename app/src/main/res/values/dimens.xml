@@ -7,6 +7,9 @@
     <dimen name="margin_top_history_correct_answers">14dp</dimen>
     <dimen name="margin_bottom_history">14dp</dimen>
 
+    <dimen name="margin_result_card_view_left_right">16dp</dimen>
+    <dimen name="margin_result_text_top">40dp</dimen>
+
     <dimen name="history_text_size">12sp</dimen>
 
 </resources>

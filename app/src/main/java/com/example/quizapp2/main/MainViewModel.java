@@ -6,23 +6,7 @@ import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
 public class MainViewModel extends ViewModel {
-
-
-    MutableLiveData<String>title = new MutableLiveData<>();
-
-    public void  init(){
-        title.setValue("Main activity ");
-        Log.d("ololo", "init: ");
+    public MainViewModel() {
+        Log.d("ololo", "Main viewmodel created");
     }
-    void changeTitle(){
-        title.setValue("new title");
-    }
-
-    @Override
-    protected void onCleared() {
-        super.onCleared();
-
-    }
-
-
 }
