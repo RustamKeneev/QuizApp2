@@ -11,6 +11,8 @@ import com.example.quizapp2.R;
 
 public class QuizHistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
+
+
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -26,6 +28,6 @@ public class QuizHistoryAdapter extends RecyclerView.Adapter<RecyclerView.ViewHo
 
     @Override
     public int getItemCount() {
-        return 3;
+        return 10;
     }
 }
