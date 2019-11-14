@@ -1,10 +1,11 @@
-package com.example.quizapp2.ui.quiz;
+package com.example.quizapp2.presentation.ui.quiz;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -14,8 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.quizapp2.R;
-import com.example.quizapp2.main.MainActivity;
-import com.example.quizapp2.ui.quiz.quiz_recycler.QuizAdapter;
+import com.example.quizapp2.presentation.main.MainActivity;
+import com.example.quizapp2.presentation.ui.quiz.quiz_recycler.QuizAdapter;
 
 public class QuizActivity extends AppCompatActivity {
 
@@ -27,7 +28,13 @@ public class QuizActivity extends AppCompatActivity {
     private TextView title_text;
     private TextView title_skip;
     private ImageView quiz_back;
+    private final static String EXTRA_AMMOUNT = "ammount";
 
+    public static void start(Context context,int ammount){
+        Intent intent = new Intent(context,QuizActivity.class);
+        intent.putExtra(EXTRA_AMMOUNT,ammount);
+        context.startActivity(intent);
+    }
 
 
 

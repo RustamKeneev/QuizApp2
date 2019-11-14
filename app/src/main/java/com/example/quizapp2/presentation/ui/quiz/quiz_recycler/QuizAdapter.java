@@ -1,4 +1,4 @@
-package com.example.quizapp2.ui.quiz.quiz_recycler;
+package com.example.quizapp2.presentation.ui.quiz.quiz_recycler;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,7 +24,7 @@ public class QuizAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
-        questionArrayList.get(position).getQuestion_text();
+//        questionArrayList.get(position).getQuestion_text();
     }
 
     @Override

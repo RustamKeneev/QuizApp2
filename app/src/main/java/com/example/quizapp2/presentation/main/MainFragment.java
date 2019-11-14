@@ -1,8 +1,7 @@
-package com.example.quizapp2.main;
+package com.example.quizapp2.presentation.main;
 
 import androidx.appcompat.widget.AppCompatSeekBar;
 import androidx.appcompat.widget.AppCompatSpinner;
-import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +10,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.quizapp2.R;
-import com.example.quizapp2.ui.quiz.QuizActivity;
+import com.example.quizapp2.presentation.ui.quiz.QuizActivity;
 
 public class MainFragment extends Fragment {
 
@@ -30,7 +30,7 @@ public class MainFragment extends Fragment {
     private View viewStart;
 
 
-    private MainViewModel mViewModel;
+//    private MainViewModel mViewModel;
 
     public static MainFragment newInstance() {
         return new MainFragment();
@@ -39,7 +39,7 @@ public class MainFragment extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.main_fragment, container, false);
+        return inflater.inflate(R.layout.fragment_main, container, false);
     }
 
     @Override
@@ -71,10 +71,9 @@ public class MainFragment extends Fragment {
         viewStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(),"click",Toast.LENGTH_SHORT).show();
-                Intent quizIntent = new Intent(getActivity(), QuizActivity.class);
-                startActivity(quizIntent);
-
+                QuizActivity.start(getContext(),appCompatSeekBar.getProgress());
+                categorySpiner.getSelectedItemPosition();
+                difficultySpiner.getSelectedItemPosition();
             }
         });
 
@@ -83,8 +82,6 @@ public class MainFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        mViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
-
     }
 
 }

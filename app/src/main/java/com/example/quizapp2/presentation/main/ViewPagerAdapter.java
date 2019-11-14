@@ -1,12 +1,12 @@
-package com.example.quizapp2.main;
+package com.example.quizapp2.presentation.main;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 
-import com.example.quizapp2.ui.settings.SettingsFragment;
-import com.example.quizapp2.ui.history.HistoryFragment;
+import com.example.quizapp2.presentation.ui.settings.SettingsFragment;
+import com.example.quizapp2.presentation.ui.history.HistoryFragment;
 
 public class ViewPagerAdapter extends FragmentPagerAdapter {
 

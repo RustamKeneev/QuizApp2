@@ -1,4 +1,4 @@
-package com.example.quizapp2.ui.history;
+package com.example.quizapp2.presentation.ui.history;
 
 import android.util.Log;
 

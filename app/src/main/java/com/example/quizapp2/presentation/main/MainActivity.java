@@ -1,20 +1,19 @@
-package com.example.quizapp2.main;
+package com.example.quizapp2.presentation.main;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 import android.util.Log;
 
+import com.example.quizapp2.presentation.ui.settings.SettingsViewModel;
 import com.example.quizapp2.R;
 import com.example.quizapp2.data.IQuizRepository;
 import com.example.quizapp2.data.QuizRepository;
 import com.example.quizapp2.model.Question;
-//import com.example.quizapp2.ui.settings.SettingsFragment;
-//import com.example.quizapp2.ui.settings.SettingsViewModel;
-import com.example.quizapp2.ui.history.HistoryViewModel;
+//import com.example.quizapp2.presentation.ui.settings.SettingsFragment;
+//import com.example.quizapp2.presentation.ui.settings.SettingsViewModel;
+import com.example.quizapp2.presentation.ui.history.HistoryViewModel;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
@@ -38,19 +37,19 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initViewModelProviders() {
-        mainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
-        historyViewModel = ViewModelProviders.of(this).get(HistoryViewModel.class);
+//        mainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
+//        historyViewModel = ViewModelProviders.of(this).get(HistoryViewModel.class);
 //        settingsViewModel = ViewModelProviders.of(this).get(SettingsViewModel.class);
     }
 
     private void viewModelObserve() {
-        historyViewModel.title.observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(String s) {
-                Log.d("ololo", "Main activity " + s);
-//                settingsViewModel.onHistoryCleared();
-            }
-        });
+//        historyViewModel.title.observe(this, new Observer<String>() {
+//            @Override
+//            public void onChanged(String s) {
+//                Log.d("ololo", "Main activity " + s);
+////                settingsViewModel.onHistoryCleared();
+//            }
+//        });
 //        settingsViewModel.title.observe(this, new Observer<String>() {
 //            @Override
 //            public void onChanged(String s) {

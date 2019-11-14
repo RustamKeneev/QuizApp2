@@ -1,4 +1,4 @@
-package com.example.quizapp2.main;
+package com.example.quizapp2.presentation.ui.settings;
 
 import android.util.Log;
 
