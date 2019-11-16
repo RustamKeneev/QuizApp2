@@ -1,4 +1,4 @@
-package com.example.quizapp2.presentation.ui.history;
+package com.example.quizapp2.model;
 
 public class HistoryModel {
     private String category;

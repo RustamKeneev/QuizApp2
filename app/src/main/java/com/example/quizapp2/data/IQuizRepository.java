@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface IQuizRepository {
 
+    void getQuestions(int ammount, OnQuizCallback callback);
+
     void getQuiz(OnQuizCallback callback);
 
     interface OnQuizCallback {

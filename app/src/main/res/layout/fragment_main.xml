@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FAFAFA"
+    android:background="#fff"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.main.MainFragment">
 
@@ -88,12 +88,13 @@
         android:layout_marginLeft="@dimen/page_big_margin"
         android:layout_marginRight="@dimen/page_big_margin"
         android:layout_marginTop="8dp">
-        <androidx.appcompat.widget.AppCompatSpinner
+        <org.angmarch.views.NiceSpinner
             android:id="@+id/main_category_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:entries="@array/categories"/>
+            app:entries="@array/categories"
+            />
     </androidx.cardview.widget.CardView>
 
     <TextView
@@ -120,12 +121,13 @@
         android:layout_marginRight="@dimen/page_big_margin"
         android:layout_marginTop="8dp">
 
-        <androidx.appcompat.widget.AppCompatSpinner
+        <org.angmarch.views.NiceSpinner
             android:id="@+id/main_difficult_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="8dp"
-            android:entries="@array/categories"/>
+            app:entries="@array/difficulty"
+            />
     </androidx.cardview.widget.CardView>
 
 

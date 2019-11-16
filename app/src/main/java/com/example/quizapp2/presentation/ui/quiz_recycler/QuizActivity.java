@@ -1,22 +1,27 @@
-package com.example.quizapp2.presentation.ui.quiz;
+package com.example.quizapp2.presentation.ui.quiz_recycler;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.quizapp2.App;
 import com.example.quizapp2.R;
+import com.example.quizapp2.data.IQuizRepository;
+import com.example.quizapp2.model.Question;
 import com.example.quizapp2.presentation.main.MainActivity;
-import com.example.quizapp2.presentation.ui.quiz.quiz_recycler.QuizAdapter;
+import com.example.quizapp2.presentation.ui.quiz_recycler.recycler.QuizAdapter;
+
+import java.util.List;
 
 public class QuizActivity extends AppCompatActivity {
 
@@ -29,10 +34,12 @@ public class QuizActivity extends AppCompatActivity {
     private TextView title_skip;
     private ImageView quiz_back;
     private final static String EXTRA_AMMOUNT = "ammount";
+    private final static String EXTRA_DIFFICULTY = "difficulty";
 
-    public static void start(Context context,int ammount){
+    public static void start(Context context,int ammount,String difficulty){
         Intent intent = new Intent(context,QuizActivity.class);
         intent.putExtra(EXTRA_AMMOUNT,ammount);
+        intent.putExtra(EXTRA_DIFFICULTY,difficulty);
         context.startActivity(intent);
     }
 
@@ -44,6 +51,24 @@ public class QuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quiz);
         initView();
         initViewModelProviders();
+
+        int amount = getIntent().getIntExtra(EXTRA_AMMOUNT,5);
+        String difficulty = getIntent().getStringExtra(EXTRA_DIFFICULTY);
+
+        App.quizRepository.getQuiz(new IQuizRepository.OnQuizCallback() {
+            @Override
+            public void onSuccess(List<Question> questions) {
+                for (Question question : questions){
+                    Log.d("ololo",question.toString());
+                }
+            }
+
+            @Override
+            public void onFailure(Exception e) {
+                e.printStackTrace();
+//                Log.d("ololo", "onFailure: " + e.getMessage());
+            }
+        });
 
     }
 
@@ -82,6 +107,6 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void initViewModelProviders() {
-        quizViewModel = ViewModelProviders.of(this).get(QuizViewModel.class);
+//        quizViewModel = ViewModelProviders.of(this).get(QuizViewModel.class);
     }
 }

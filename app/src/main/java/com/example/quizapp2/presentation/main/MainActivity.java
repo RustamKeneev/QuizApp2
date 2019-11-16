@@ -1,10 +1,12 @@
 package com.example.quizapp2.presentation.main;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 
 import com.example.quizapp2.presentation.ui.settings.SettingsViewModel;
 import com.example.quizapp2.R;
@@ -19,9 +21,6 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private MainViewModel mainViewModel;
-    private HistoryViewModel historyViewModel;
-    private SettingsViewModel settingsViewModel;
 
     private ViewPager mViewPager;
     private BottomNavigationView mNavigation;
@@ -34,6 +33,28 @@ public class MainActivity extends AppCompatActivity {
         initViewModelProviders();
         viewModelObserve();
         settingViewPager();
+        settingBottomnavigationView();
+    }
+
+    private void settingBottomnavigationView() {
+        mNavigation = findViewById(R.id.bottom_navigation);
+        mNavigation.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                switch (menuItem.getItemId()){
+                    case R.id.nav_main:
+                        mViewPager.setCurrentItem(0);
+                        break;
+                    case R.id.nav_history:
+                        mViewPager.setCurrentItem(1);
+                        break;
+                    case R.id.nav_settings:
+                        mViewPager.setCurrentItem(2);
+                        break;
+                }
+                return false;
+            }
+        });
     }
 
     private void initViewModelProviders() {
@@ -57,24 +78,24 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
     }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        new QuizRepository().getQuiz(new IQuizRepository.OnQuizCallback() {
-            @Override
-            public void onSuccess(List<Question> questions) {
-                for (Question question : questions){
-
-                }
-            }
-
-            @Override
-            public void onFailure(Exception e) {
-                Log.d("ololo", "Failed: " + e.getMessage());
-            }
-        });
-    }
+//
+//    @Override
+//    protected void onResume() {
+//        super.onResume();
+//        new QuizRepository().getQuiz(new IQuizRepository.OnQuizCallback() {
+//            @Override
+//            public void onSuccess(List<Question> questions) {
+//                for (Question question : questions){
+//
+//                }
+//            }
+//
+//            @Override
+//            public void onFailure(Exception e) {
+//                Log.d("ololo", "Failed: " + e.getMessage());
+//            }
+//        });
+//    }
 
     private void settingViewPager() {
         mViewPager = findViewById(R.id.main_view_pager);
@@ -85,18 +106,17 @@ public class MainActivity extends AppCompatActivity {
         mViewPager.addOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
             public void onPageSelected(int position) {
-                int selectedItem = R.id.nav_main;
-
-                switch (position) {
+                switch (position){
+                    case 0:
+                        mNavigation.setSelectedItemId(R.id.nav_main);
+                        break;
                     case 1:
-                        selectedItem = R.id.nav_history;
+                        mNavigation.setSelectedItemId(R.id.nav_history);
                         break;
                     case 2:
-                        selectedItem = R.id.nav_settings;
+                        mNavigation.setSelectedItemId(R.id.nav_settings);
                         break;
                 }
-
-                mNavigation.setSelectedItemId(selectedItem);
             }
         });
     }

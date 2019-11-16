@@ -11,7 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.quizapp2.R;
-import com.example.quizapp2.presentation.ui.history.HistoryModel;
+import com.example.quizapp2.model.HistoryModel;
 
 
 import java.util.ArrayList;

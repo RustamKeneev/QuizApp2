@@ -1,9 +1,7 @@
 package com.example.quizapp2.presentation.main;
 
 import androidx.appcompat.widget.AppCompatSeekBar;
-import androidx.appcompat.widget.AppCompatSpinner;
 
-import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -16,16 +14,17 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.quizapp2.R;
-import com.example.quizapp2.presentation.ui.quiz.QuizActivity;
+import com.example.quizapp2.presentation.ui.quiz_recycler.QuizActivity;
+
+import org.angmarch.views.NiceSpinner;
 
 public class MainFragment extends Fragment {
 
     private AppCompatSeekBar appCompatSeekBar;
-    private AppCompatSpinner categorySpiner;
-    private AppCompatSpinner difficultySpiner;
+    private NiceSpinner categorySpiner;
+    private NiceSpinner difficultySpiner;
     private TextView main_questions_amount;
     private View viewStart;
 
@@ -46,6 +45,7 @@ public class MainFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         appCompatSeekBar = view.findViewById(R.id.main_amount_seek_bar);
+        appCompatSeekBar.setProgress(5);
         categorySpiner = view.findViewById(R.id.main_category_spinner);
         difficultySpiner = view.findViewById(R.id.main_difficult_spinner);
         main_questions_amount = view.findViewById(R.id.main_questions_amount);
@@ -54,7 +54,10 @@ public class MainFragment extends Fragment {
         appCompatSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-                main_questions_amount.setText(String.valueOf(i));
+                if (i < 6 ){
+                    appCompatSeekBar.setProgress(5);
+                }
+                main_questions_amount.setText(String.valueOf(appCompatSeekBar.getProgress()));
             }
 
             @Override
@@ -71,9 +74,13 @@ public class MainFragment extends Fragment {
         viewStart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                QuizActivity.start(getContext(),appCompatSeekBar.getProgress());
-                categorySpiner.getSelectedItemPosition();
-                difficultySpiner.getSelectedItemPosition();
+                QuizActivity.start(getContext(),appCompatSeekBar.getProgress(),"easy");
+                categorySpiner.getSelectedItem().toString();
+//                difficultySpiner.getOnSpinnerItemSelectedListener();
+
+                Log.d("ololo", "Start properties - amount:" + appCompatSeekBar.getProgress()
+                        + " category: " + categorySpiner.getSelectedIndex()
+                        + " difficulty: " + difficultySpiner.getSelectedIndex());
             }
         });
 

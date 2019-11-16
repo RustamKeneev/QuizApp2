@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.quizapp2.R;
+import com.example.quizapp2.model.HistoryModel;
 import com.example.quizapp2.presentation.ui.history.recycler.HistoryQuizAdapter;
 
 import java.util.ArrayList;

@@ -1,4 +1,4 @@
-package com.example.quizapp2.presentation.ui.quiz.quiz_recycler;
+package com.example.quizapp2.presentation.ui.quiz_recycler.recycler;
 
 import android.view.View;
 import android.widget.TextView;
