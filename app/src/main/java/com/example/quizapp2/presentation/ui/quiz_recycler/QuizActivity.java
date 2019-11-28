@@ -20,12 +20,13 @@ import com.example.quizapp2.data.IQuizRepository;
 import com.example.quizapp2.model.Question;
 import com.example.quizapp2.presentation.main.MainActivity;
 import com.example.quizapp2.presentation.ui.quiz_recycler.recycler.QuizAdapter;
+import com.example.quizapp2.presentation.ui.quiz_recycler.recycler.QuizViewHolder;
 
 import java.util.List;
 
 public class QuizActivity extends AppCompatActivity {
 
-    private QuizViewModel quizViewModel;
+//    private QuizViewHolder quizViewHolder;
     private RecyclerView quiz_recyclerView;
     private QuizAdapter quizAdapter;
     private ProgressBar progressBar;
@@ -76,6 +77,7 @@ public class QuizActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.quiz_progress);
         progressText = findViewById(R.id.quiz_progress_text);
         title_text = findViewById(R.id.quiz_title);
+
         quiz_back = findViewById(R.id.quiz_back);
         quiz_back.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -107,6 +109,6 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void initViewModelProviders() {
-//        quizViewModel = ViewModelProviders.of(this).get(QuizViewModel.class);
+//        quizViewHolder = ViewModelProviders.of(this).get(QuizViewHolder.class);
     }
 }
